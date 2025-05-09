@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Controle de música -->
     <div class="music-control" id="musicControl">
         <div class="music-icon">♪</div>
     </div>
     <audio id="bgMusic" loop>
         <source src="imagens/musica.mp3" type="audio/mpeg">
-        <!-- Substitua pelo link da sua música romântica -->
     </audio>
 
     <header>
@@ -23,7 +21,6 @@
         <p class="subtitle">O amor da minha vida</p>
     </header>
 
-    <!-- Contador de tempo de namoro -->
     <section>
         <div class="counter">
             <h2>Nosso Tempo Juntos</h2>
@@ -54,7 +51,7 @@
         <div class="love-letter">
             <p>Meu amor,</p>
             <p>Desde o momento em que te conheci, minha vida ganhou novas cores, novos motivos para me tornar melhor. Cada dia ao seu lado é um presente que eu guardo com todo cuidado no meu coração, onde cada momento é especial.</p>
-            <p>Lembro como se fosse hoje a primeira vez que nos falamos e nem sabiamos oque estava pra acontecer. Bricadeiras, risadas e nisso veio o nosso inicio e estamos esse tempo todo juntos e temos mais uma eternidade pela frente um ao lado do outro.</p>
+            <p>Lembro como se fosse hoje a primeira vez que nos falamos e nem sabíamos o que estava para acontecer. Brincadeiras, risadas... e nisso veio o nosso início. Estamos juntos há tanto tempo, e ainda temos uma eternidade pela frente, um ao lado do outro.</p>
             <p>Você é a pessoa mais incrível que já conheci e eu sou grato todos os dias por ter você na minha vida.</p>
             <p>Com todo meu amor,</p>
             <p>Henrique.</p>
@@ -64,11 +61,9 @@
     <section class="memories">
         <h2>Um pouco de nossas lembranças</h2>
         <div class="photo-gallery">
-            <!-- Adicione fotos de vocês dois aqui -->
             <img src="imagens/RobloxScreenShot20250130_173011976.png" alt="Nós dois" class="photo">
             <img src="imagens/Captura de tela 2025-02-04 172628.png" alt="Momento especial" class="photo">
             <img src="imagens/Captura de tela 2025-04-27 012908.png" alt="Outro momento" class="photo">
-            <!-- Adicione mais fotos -->
         </div>
     </section>
 
@@ -95,9 +90,8 @@
     </footer>
 
     <script>
-        // CONFIGURAÇÕES (ALTERE AQUI)
         const config = {
-            startDate: new Date('2024-10-19T00:00:00-03:00'), // Data fixa com fuso do Brasil
+            startDate: new Date('2024-10-19T00:00:00-03:00'), 
             musicUrl: 'imagens/musica.mp3',
             names: {
                 yourName: 'Henrique',
@@ -126,18 +120,15 @@
             const now = new Date();
             const diff = now - config.startDate;
             
-            // Cálculos precisos
             const years = now.getFullYear() - config.startDate.getFullYear();
             const months = now.getMonth() - config.startDate.getMonth();
             const days = now.getDate() - config.startDate.getDate();
             const hours = now.getHours();
             
-            // Ajustes para valores negativos
             const totalMonths = years * 12 + months;
             const adjustedYears = Math.floor(totalMonths / 12);
             const adjustedMonths = totalMonths % 12;
             
-            // Atualiza a exibição
             document.getElementById('years').textContent = adjustedYears;
             document.getElementById('months').textContent = adjustedMonths;
             document.getElementById('days').textContent = days < 0 ? 0 : days;
@@ -153,7 +144,6 @@
             const musicControl = document.getElementById('musicControl');
             let isPlaying = false;
             
-            // Carregar música personalizada
             if (config.musicUrl) {
                 music.src = config.musicUrl;
             }
@@ -169,7 +159,6 @@
                 isPlaying = !isPlaying;
             });
             
-            // Para dispositivos móveis, precisamos de interação do usuário primeiro
             document.body.addEventListener('click', function firstClick() {
                 music.volume = 0.1;
                 document.body.removeEventListener('click', firstClick);
@@ -180,13 +169,10 @@
             alert("Gabriely, eu te amo mais que tudo neste mundo! ❤");
         });
 
-        // Atualizar o ano no footer
         document.querySelector('footer p:last-child').textContent = 
             document.querySelector('footer p:last-child').textContent.replace('2025', new Date().getFullYear());
         
-            // INICIALIZAÇÃO
         window.onload = function() {
-            // Substitui placeholders
             document.querySelectorAll('[contenteditable="true"]').forEach(el => {
                 el.textContent = config.names[el.getAttribute('data-name')];
             });
@@ -195,7 +181,7 @@
             updateRelationshipTime();
             setupMusic();
             
-            setInterval(updateRelationshipTime, 3600000); // Atualiza a cada hora
+            setInterval(updateRelationshipTime, 3600000);
         };
     </script>
 </body>
