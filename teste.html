@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Amor da Minha Vida</title>
+    <link rel="shortcut icon" href="imagens/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Controle de música -->
+    <div class="music-control" id="musicControl">
+        <div class="music-icon">♪</div>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="imagens/musica.mp3" type="audio/mpeg">
+        <!-- Substitua pelo link da sua música romântica -->
+    </audio>
+
+    <header>
+        <div class="hearts-container" id="hearts"></div>
+        <h1><span class="heart">❤</span> Para Gabriely<span class="heart">❤</span></h1>
+        <p class="subtitle">O amor da minha vida</p>
+    </header>
+
+    <!-- Contador de tempo de namoro -->
+    <section>
+        <div class="counter">
+            <h2>Nosso Tempo Juntos</h2>
+            <p>Cada segundo ao seu lado é precioso para mim</p>
+            <div class="counter-numbers">
+                <div class="counter-item">
+                    <div class="counter-number" id="years">0</div>
+                    <div>Anos</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="months">0</div>
+                    <div>Meses</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="days">0</div>
+                    <div>Dias</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="hours">0</div>
+                    <div>Horas</div>
+                </div>
+            </div>
+            <p>Desde o dia <span id="startDate">19 de outubro de 2024<span></p>
+    </section>
+
+    <section>
+        <h2>Nossa História</h2>
+        <div class="love-letter">
+            <p>Meu amor,</p>
+            <p>Desde o momento em que te conheci, minha vida ganhou novas cores, novos motivos para me tornar melhor. Cada dia ao seu lado é um presente que eu guardo com todo cuidado no meu coração, onde cada momento é especial.</p>
+            <p>Lembro como se fosse hoje a primeira vez que nos falamos e nem sabiamos oque estava pra acontecer. Bricadeiras, risadas e nisso veio o nosso inicio e estamos esse tempo todo juntos e temos mais uma eternidade pela frente um ao lado do outro.</p>
+            <p>Você é a pessoa mais incrível que já conheci e eu sou grato todos os dias por ter você na minha vida.</p>
+            <p>Com todo meu amor,</p>
+            <p>Henrique.</p>
+        </div>
+    </section>
+
+    <section class="memories">
+        <h2>Um pouco de nossas lembranças</h2>
+        <div class="photo-gallery">
+            <!-- Adicione fotos de vocês dois aqui -->
+            <img src="imagens/RobloxScreenShot20250130_173011976.png" alt="Nós dois" class="photo">
+            <img src="imagens/Captura de tela 2025-02-04 172628.png" alt="Momento especial" class="photo">
+            <img src="imagens/Captura de tela 2025-04-27 012908.png" alt="Outro momento" class="photo">
+            <!-- Adicione mais fotos -->
+        </div>
+    </section>
+
+    <section>
+        <h2>Motivos Pelos Qual Eu Te Amo</h2>
+        <div class="love-letter">
+            <ul>
+                <li>Seu sorriso ilumina meus dias</li>
+                <li>Seu coração é puro e bondoso</li>
+                <li>Você me faz ser uma pessoa melhor</li>
+                <li>Você é a mais perfeita</li>
+                <li>A garota dos meus sonhos</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <button id="surpresa">Clique para uma Surpresa!</button>
+    </section>
+
+    <footer>
+        <p>Feito com ❤ por Henrique para Gabriely</p>
+        <p>© 2025 - Todos os direitos reservados (o direito de amar você eternamente)</p>
+    </footer>
+
+    <script>
+        // CONFIGURAÇÕES (ALTERE AQUI)
+        const config = {
+            startDate: new Date('2024-10-19T00:00:00-03:00'), // Data fixa com fuso do Brasil
+            musicUrl: 'imagens/musica.mp3',
+            names: {
+                yourName: 'Henrique',
+                partnerName: 'Gabriely'
+            }
+        };
+
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-fall';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.opacity = Math.random() * 0.5 + 0.3;
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        function updateRelationshipTime() {
+            const now = new Date();
+            const diff = now - config.startDate;
+            
+            // Cálculos precisos
+            const years = now.getFullYear() - config.startDate.getFullYear();
+            const months = now.getMonth() - config.startDate.getMonth();
+            const days = now.getDate() - config.startDate.getDate();
+            const hours = now.getHours();
+            
+            // Ajustes para valores negativos
+            const totalMonths = years * 12 + months;
+            const adjustedYears = Math.floor(totalMonths / 12);
+            const adjustedMonths = totalMonths % 12;
+            
+            // Atualiza a exibição
+            document.getElementById('years').textContent = adjustedYears;
+            document.getElementById('months').textContent = adjustedMonths;
+            document.getElementById('days').textContent = days < 0 ? 0 : days;
+            document.getElementById('hours').textContent = hours;
+            
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('startDate').textContent = 
+                config.startDate.toLocaleDateString('pt-BR', options);
+        }
+
+        function setupMusic() {
+            const music = document.getElementById('bgMusic');
+            const musicControl = document.getElementById('musicControl');
+            let isPlaying = false;
+            
+            // Carregar música personalizada
+            if (config.musicUrl) {
+                music.src = config.musicUrl;
+            }
+            
+            musicControl.addEventListener('click', function() {
+                if (isPlaying) {
+                    music.pause();
+                    musicControl.innerHTML = '<div class="music-icon">♪</div>';
+                } else {
+                    music.play();
+                    musicControl.innerHTML = '<div class="music-icon">❚❚</div>';
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // Para dispositivos móveis, precisamos de interação do usuário primeiro
+            document.body.addEventListener('click', function firstClick() {
+                music.volume = 0.1;
+                document.body.removeEventListener('click', firstClick);
+            });
+        }
+
+        document.getElementById('surpresa').addEventListener('click', function() {
+            alert("Gabriely, eu te amo mais que tudo neste mundo! ❤");
+        });
+
+        // Atualizar o ano no footer
+        document.querySelector('footer p:last-child').textContent = 
+            document.querySelector('footer p:last-child').textContent.replace('2025', new Date().getFullYear());
+        
+            // INICIALIZAÇÃO
+        window.onload = function() {
+            // Substitui placeholders
+            document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+                el.textContent = config.names[el.getAttribute('data-name')];
+            });
+            
+            createHearts();
+            updateRelationshipTime();
+            setupMusic();
+            
+            setInterval(updateRelationshipTime, 3600000); // Atualiza a cada hora
+        };
+    </script>
+</body>
+</html>
